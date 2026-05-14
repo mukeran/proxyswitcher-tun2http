@@ -27,7 +27,11 @@ if(ANDROID)
     )
 endif()
 
-add_library(proxyswitcher_tun2http SHARED ${T2H_SOURCES})
+if(ANDROID)
+    add_library(proxyswitcher_tun2http SHARED ${T2H_SOURCES})
+else()
+    add_library(proxyswitcher_tun2http STATIC ${T2H_SOURCES})
+endif()
 
 if(ANDROID)
     find_library(LOG_LIB log)
